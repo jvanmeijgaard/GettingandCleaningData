@@ -1,10 +1,8 @@
 library(plyr)
 library(dplyr)
 
-options(width=105)
-
 # Read in feature names list
-df.featurenames <- read.table('./data/UCI HAR Dataset/features.txt', col.names=c('variable','featurelabel'))
+df.featurenames <- read.table('./features.txt', col.names=c('variable','featurelabel'))
 
 # Create indicator for mean and standard deviation values of measures
 mnstdindicator <- (grepl('mean\\(\\)',df.featurenames$featurelabel) | grepl('std\\(\\)',df.featurenames$featurelabel))
@@ -13,15 +11,15 @@ mnstdindicator <- (grepl('mean\\(\\)',df.featurenames$featurelabel) | grepl('std
 df.featurenames$featurelabel <- gsub(',','.',gsub('\\)','',gsub('\\(','.',gsub('\\(\\)','',df.featurenames[,2]))))
 
 # Read in training and test data feature set (x) and response (y)
-df.xtrain <- read.table('./data/UCI HAR Dataset/train/X_train.txt', numerals = "no.loss", colClasses="numeric", col.names=df.featurenames$featurelabel)
-df.ytrain <- read.table('./data/UCI HAR Dataset/train/y_train.txt', colClasses="factor", col.names='activity')
+df.xtrain <- read.table('./train/X_train.txt', numerals = "no.loss", colClasses="numeric", col.names=df.featurenames$featurelabel)
+df.ytrain <- read.table('./train/y_train.txt', colClasses="factor", col.names='activity')
 
-df.xtest <- read.table('./data/UCI HAR Dataset/test/X_test.txt', numerals = "no.loss", colClasses="numeric", col.names=df.featurenames$featurelabel)
-df.ytest <- read.table('./data/UCI HAR Dataset/test/y_test.txt', colClasses="integer", col.names='activity')
+df.xtest <- read.table('./test/X_test.txt', numerals = "no.loss", colClasses="numeric", col.names=df.featurenames$featurelabel)
+df.ytest <- read.table('./test/y_test.txt', colClasses="integer", col.names='activity')
 
 # Read in subject ids for both sets
-df.subjecttrain <- read.table('./data/UCI HAR Dataset/train/subject_train.txt', colClasses="factor", col.names='subject')
-df.subjecttest <- read.table('./data/UCI HAR Dataset/test/subject_test.txt', colClasses="integer", col.names='subject')
+df.subjecttrain <- read.table('./train/subject_train.txt', colClasses="factor", col.names='subject')
+df.subjecttest <- read.table('./test/subject_test.txt', colClasses="integer", col.names='subject')
 
 # Combine training data into 1 data frame, select mean and std variables and label 'training' to column 'source'
 df.train <- cbind(df.xtrain[,mnstdindicator], df.ytrain, df.subjecttrain)
