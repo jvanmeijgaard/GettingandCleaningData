@@ -1,17 +1,16 @@
 # R Assignment 'Getting and Cleaning Data' - 'Human Activity Recognition Using Smartphones'
 
-The analysis and data sets use source data from:
-==================================================================
-Human Activity Recognition Using Smartphones Dataset
-Version 1.0
-==================================================================
+The analyses and data sets use source data from: 
+
+Human Activity Recognition Using Smartphones Dataset Version 1.0
+
 Jorge L. Reyes-Ortiz, Davide Anguita, Alessandro Ghio, Luca Oneto.
 Smartlab - Non Linear Complex Systems Laboratory
 DITEN - Universit‡ degli Studi di Genova.
 Via Opera Pia 11A, I-16145, Genoa, Italy.
 activityrecognition@smartlab.ws
 www.smartlab.ws
-==================================================================
+
 
 The data was obtained from this source:
 https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip
@@ -30,4 +29,6 @@ The source data contains two sets, (1) the sensor signals after pre-processing (
 
 The script reads in the source data for all the derived features (561), subsets the data to only the mean() and std() features for each measure (66 columns), combining both test and training data into a single data set.
 
-The set MnStdFeatures.csv is a comma separate data set of 69 columns with the values of the selected features, subject id 1...30, the activity lable (6 different values) and an indicator for the source ('training' or 'test')
+The data MnStdFeatures.csv is a comma separate data set of 69 columns with the values of the selected features, subject id 1...30, the activity label (6 different values) and an indicator for the source ('training' or 'test')
+
+The data MnStdFeaturesAverages.csv is a commar separated data set of 68 columns with the averages of the values of the selected features, averaged by subject and activity. So for each of the 30 subjects there are six values for each feature, with a column indicating the subject and a column indicating the activity (180 rows, 68 columns)
