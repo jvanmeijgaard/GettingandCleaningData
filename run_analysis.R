@@ -37,7 +37,9 @@ df.all$activity <- as.factor(activitylabelnames[df.all$activity])
 
 # Obtain means of features by activity and subject
 df.allmeans <- aggregate(df.all[, 1:sum(mnstdindicator)], list(df.all$activity,df.all$subject), mean)
-df.allmeans <- rename(df.allmeans, c('Group.1'='activity', 'Group.2'='subject'))
+
+# Change column names
+names(df.allmeans) <- c('activity','subject',paste0('Avg',names(df.all[, 1:sum(mnstdindicator)])))
 
 # Write out data sets as csv files
 write.csv(df.all,file='./GettingandCleaningData/MnStdFeatures.csv', row.names = FALSE, fileEncoding = 'UTF-8')
