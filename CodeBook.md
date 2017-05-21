@@ -31,7 +31,7 @@ These signals were used to estimate variables of the feature vector for each pat
 - fBodyGyroMag
 - fBodyGyroJerkMag
 
-For each measure the mean() - Mean value and std() - Standard deviation are retained
+For each measure the mean() - Mean value and std() - Standard deviation are retained.
 A total of 33 measures, and 2 values per measure.
 
 The source data is divided into a training and a test data set. Here, the data are combined into a single data set and columns for the subject id, the activity and source (training, test) are added to the final data set.
